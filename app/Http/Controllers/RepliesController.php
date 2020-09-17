@@ -3,20 +3,9 @@
 namespace LaravelForum\Http\Controllers;
 
 use Illuminate\Http\Request;
-use LaravelForum\Discussion;
-use LaravelForum\Http\Requests\CreateDiscussionRequest;
 
-class DiscussionController extends Controller
+class RepliesController extends Controller
 {
-    
-    public function __construct()
-    {
-        $this->middleware('auth')->only('create', 'store');
-    }
-    
-
-    
-    
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +13,7 @@ class DiscussionController extends Controller
      */
     public function index()
     {
-        return view('discussion.index')->with('discussions', Discussion::paginate(4));
+        //
     }
 
     /**
@@ -34,7 +23,7 @@ class DiscussionController extends Controller
      */
     public function create()
     {
-        return view('discussion.create');
+        //
     }
 
     /**
@@ -43,17 +32,9 @@ class DiscussionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateDiscussionRequest $request)
+    public function store(Request $request)
     {
-        auth()->user()->discussions()->create([
-            'title' => $request->title,
-            'slug' => str_slug($request->title),
-            'content' => $request->content,
-            'channel_id' => $request->channel_id,
-        ]);
-
-        session()->flash('success', 'Discussion Added Successfuly');
-        return redirect(route('discussion.index'));
+        //
     }
 
     /**
@@ -62,9 +43,9 @@ class DiscussionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Discussion $discussion)
+    public function show($id)
     {
-        return view('discussion.show')->with('discussion', $discussion);
+        //
     }
 
     /**

@@ -24,7 +24,7 @@ class CreateDiscussionRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
+            'title' => 'required|unique:discussions',
             'content' => 'required',
             'channel_id' => 'required',
         ];
