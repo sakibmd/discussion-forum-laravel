@@ -2,9 +2,11 @@
 
 namespace LaravelForum\Http\Controllers;
 
+use CreateRepliesTable;
 use Illuminate\Http\Request;
 use LaravelForum\Discussion;
 use LaravelForum\Http\Requests\CreateDiscussionRequest;
+use LaravelForum\Http\Requests\CreateReplyRequest;
 
 class RepliesController extends Controller
 {
@@ -34,8 +36,9 @@ class RepliesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateDiscussionRequest $request, Discussion $discussion)
+    public function store(CreateReplyRequest $request, Discussion $discussion)
     {
+        
         auth()->user()->replies()->create([
             'content' => $request->content,
             'discussion_id' => $discussion->id

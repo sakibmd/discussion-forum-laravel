@@ -5,6 +5,7 @@ namespace LaravelForum\Http\Controllers;
 use Illuminate\Http\Request;
 use LaravelForum\Discussion;
 use LaravelForum\Http\Requests\CreateDiscussionRequest;
+use LaravelForum\Reply;
 
 class DiscussionController extends Controller
 {
@@ -65,6 +66,22 @@ class DiscussionController extends Controller
     public function show(Discussion $discussion)
     {
         return view('discussion.show')->with('discussion', $discussion);
+    }
+
+
+
+     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function reply(Discussion $discussion, Reply $reply)
+    {
+        $discussion->markAsBestReply($reply);
+
+        session()->flash('success', 'Mark as Best Reply');
+        return redirect()->back();
     }
 
     /**
