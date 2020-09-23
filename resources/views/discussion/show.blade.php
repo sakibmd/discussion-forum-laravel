@@ -21,7 +21,7 @@
     <div class="card my-5">
         <div class="card-header">
             <div class="d-flex justify-content-between">
-                <div>
+                <div class="">
                     <img src="{{ Gravatar::src($reply->owner->email) }}"  height="40px" width="40[x]" style="border-radius: 50%;" alt="">
                     <span>{{ $reply->owner->name }}</span>
                 </div>
