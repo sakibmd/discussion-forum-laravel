@@ -78,7 +78,12 @@ class DiscussionController extends Controller
      */
     public function reply(Discussion $discussion, Reply $reply)
     {
-        $discussion->markAsBestReply($reply);
+        //dd($reply);
+        //$discussion->markAsBestReply($reply);
+
+
+        $discussion->reply_id = $reply->id;
+        $discussion->save();
 
         session()->flash('success', 'Mark as Best Reply');
         return redirect()->back();
