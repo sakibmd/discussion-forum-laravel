@@ -9,13 +9,13 @@
     @include('partials.discussions-header')
 
         <div class="card-body">
-              <div class="text-center">
+            <div class="text-center">
                 <strong>{{  $discussion->title  }}</strong>
             </div>
-              <hr>
-              {!! $discussion->content !!}
+            <hr>
+            {!! $discussion->content !!}
 
-              @if ($discussion->bestReply)
+            @if ($discussion->bestReply)
                 <div class="card bg-success my-5" style="color: whitesmoke">
                     <div class="card-header">
                         <div class="d-flex justify-content-between">

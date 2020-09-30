@@ -4,9 +4,11 @@ namespace LaravelForum\Http\Controllers;
 
 use CreateRepliesTable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use LaravelForum\Discussion;
 use LaravelForum\Http\Requests\CreateDiscussionRequest;
 use LaravelForum\Http\Requests\CreateReplyRequest;
+use LaravelForum\Notifications\NewReplyAdded;
 
 class RepliesController extends Controller
 {
@@ -39,10 +41,12 @@ class RepliesController extends Controller
     public function store(CreateReplyRequest $request, Discussion $discussion)
     {
         
-        auth()->user()->replies()->create([
+        Auth::user()->replies()->create([
             'content' => $request->content,
             'discussion_id' => $discussion->id
         ]);
+
+        $discussion->author->notify(new NewReplyAdded($discussion));
 
         session()->flash('success', 'Reply Added');
         return redirect()->back();
