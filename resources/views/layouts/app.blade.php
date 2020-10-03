@@ -52,6 +52,12 @@
                                   </a>
                              </li>
                           @endauth
+                          <li class="nav-item ">
+                            <a href="{{ route('discussion.index') }}" class="nav-link">
+                                Discussion
+                            </a>
+
+                          </li>
                         
                     </ul>
 
