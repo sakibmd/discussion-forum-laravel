@@ -44,7 +44,7 @@
                         
                           @auth
                              <li class="nav-item">
-                                <a href="" class="nav-link">
+                                <a href="{{ route('users.notifications') }}" class="nav-link">
                                     <span class="badge badge-info">
                                         {{ auth()->user()->unreadNotifications->count() }}
                                         Unread Notifications
