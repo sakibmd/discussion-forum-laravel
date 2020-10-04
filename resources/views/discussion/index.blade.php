@@ -4,7 +4,7 @@
     @include('partials.successMsg')
 
 @foreach ($discussions as $discussion)
-<div class="card m-3">
+<div class="card mb-5">
     
 
     @include('partials.discussions-header')
