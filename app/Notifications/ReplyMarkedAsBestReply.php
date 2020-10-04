@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use LaravelForum\Discussion;
 
-class ReplyMarkedAsBestReply extends Notification
+class ReplyMarkedAsBestReply extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -26,7 +26,7 @@ class ReplyMarkedAsBestReply extends Notification
      */
     public function __construct(Discussion $discussion)
     {
-        dd($discussion);
+        //dd($discussion);
         $this->discussion = $discussion;
     }
 

@@ -3,8 +3,10 @@
 namespace LaravelForum\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use LaravelForum\Discussion;
 use LaravelForum\Http\Requests\CreateDiscussionRequest;
+use LaravelForum\Notifications\ReplyMarkedAsBestReply;
 use LaravelForum\Reply;
 
 class DiscussionController extends Controller
@@ -25,7 +27,7 @@ class DiscussionController extends Controller
      */
     public function index()
     {
-        return view('discussion.index')->with('discussions', Discussion::paginate(4));
+        return view('discussion.index')->with('discussions', Discussion::filterByChannels()->paginate(3));
     }
 
     /**
@@ -84,6 +86,13 @@ class DiscussionController extends Controller
 
         $discussion->reply_id = $reply->id;
         $discussion->save();
+
+        if($reply->owner->id ==$discussion->author->id ){
+            session()->flash('success', 'Mark as Best Reply');
+            return redirect()->back();
+        }
+
+        $reply->owner->notify(new ReplyMarkedAsBestReply($reply->discussion));
 
         session()->flash('success', 'Mark as Best Reply');
         return redirect()->back();
