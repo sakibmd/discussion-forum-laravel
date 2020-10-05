@@ -1,3 +1,13 @@
+<h1>  This is my practice project. In this project i am trying to implement... </h2>
+ 
+## Create Discussion in different channels like Laravel, Nodejs, Vue.js etc.
+## Commenting system 
+## Email Notification using queue jobs (When an user make a comment to a discussion article then an email notification will be sends to the owner of the artical, that a new reply added to your discussion. And when the owner of the article makes a reply as the best reply then at the same time an email notification sends to the user that your reply is marked as best reply.)
+## Save Notifications in database & show them to registered users.
+## Comment Replying System
+## Mark as best Reply 
+## Login, Register, Email Verification, Forget Password
+
 <h3>Technology: </h3> 
 
     --> HTML
